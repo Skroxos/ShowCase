@@ -12,7 +12,7 @@ public class InventoryPresenter : MonoBehaviour
     [SerializeField] private ItemSO _testItem;
     [SerializeField] private ItemSO _testItem2;
     
-    private IntventoryModel _model;
+    public IntventoryModel _model;
     private List<InventoryView> _views;
 
     private void Awake()
