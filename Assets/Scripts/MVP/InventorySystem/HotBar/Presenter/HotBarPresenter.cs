@@ -8,14 +8,15 @@ public class HotBarPresenter : MonoBehaviour
     [SerializeField] private int hotBarSize = 5;
     private HotBarModel hotBarModel;
     private IntventoryModel inventoryModel;
-
-    private void Start()
+    
+    private async void Start()
     {
         hotBarModel = new HotBarModel(hotBarSize);
         inventoryModel = presenter._model;
 
         hotBarModel.OnSelectionChanged += UpdateHotBarSelection;
         
+        await System.Threading.Tasks.Task.Delay(100); // Awake / Start didnt help here
         UpdateHotBarSelection(0);
     }
 
@@ -24,7 +25,7 @@ public class HotBarPresenter : MonoBehaviour
         hotBarModel.OnSelectionChanged -= UpdateHotBarSelection;
     }
     
-    private void Update()
+    private void Update() 
     {
         HandleInput();
     }
