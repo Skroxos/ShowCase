@@ -9,13 +9,14 @@ public class HotBarPresenter : MonoBehaviour
     private HotBarModel hotBarModel;
     private IntventoryModel inventoryModel;
 
-    private void Start()
+    private async void Start()
     {
         hotBarModel = new HotBarModel(hotBarSize);
         inventoryModel = presenter._model;
 
         hotBarModel.OnSelectionChanged += UpdateHotBarSelection;
         
+        await System.Threading.Tasks.Task.Delay(100); // small delay to ensure everything is initialized
         UpdateHotBarSelection(0);
     }
 
@@ -67,6 +68,7 @@ public class HotBarPresenter : MonoBehaviour
 
     private void UpdateHotBarSelection(int obj)
     {
+       
         hotBarView.MoveSelector(obj);
     }
 }
