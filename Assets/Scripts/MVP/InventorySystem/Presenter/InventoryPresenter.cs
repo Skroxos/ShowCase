@@ -11,6 +11,7 @@ public class InventoryPresenter : MonoBehaviour
     
     [SerializeField] private ItemSO _testItem;
     [SerializeField] private ItemSO _testItem2;
+    [SerializeField] private GameObject[] _slots;
     
     public IntventoryModel _model;
     private List<InventoryView> _views;
@@ -25,8 +26,7 @@ public class InventoryPresenter : MonoBehaviour
             _views = new List<InventoryView>();
             for (int i = 0; i < _inventoryCapacity ; i++)
             {
-                GameObject obj = Instantiate(_slotPrefab, _slotContainer);
-                InventoryView view = obj.GetComponentInChildren<InventoryView>();
+                InventoryView view = _slots[i].GetComponentInChildren<InventoryView>();
                 _views.Add(view);
             }
 
@@ -44,13 +44,13 @@ public class InventoryPresenter : MonoBehaviour
     
     private void UpdateSlot(int index)
     {
-        // Vytáhneme data z Modelu
+       
         var slotData = _model.GetSlot(index);
         
-        // Najdeme odpovídající View
+       
         var view = _views[index];
 
-        // Nakrmíme View
+       
         if (slotData.isEmpty())
         {
             view.ClearData();

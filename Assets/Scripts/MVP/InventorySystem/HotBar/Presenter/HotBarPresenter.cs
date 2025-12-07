@@ -68,6 +68,7 @@ public class HotBarPresenter : MonoBehaviour
 
     private void UpdateHotBarSelection(int obj)
     {
+       
         hotBarView.MoveSelector(obj);
     }
 }
